@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巴蕊花生 三店深度評論分析報告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:"Noto Sans TC","Helvetica Neue",sans-serif}.quote{border-left:4px solid #f59e0b}@media(max-width:640px){body{font-size:17px}p,li,.text-sm{font-size:1rem!important;line-height:1.75}h1{font-size:2rem!important}h2{font-size:1.5rem!important}h3{font-size:1.2rem!important}.text-xs{font-size:.875rem!important}.text-3xl{font-size:2rem!important}.text-2xl{font-size:1.5rem!important}}</style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+<header class="bg-stone-900 text-white py-16">
+  <div class="max-w-4xl mx-auto px-6">
+    <p class="text-amber-400 text-sm tracking-widest mb-2">深度評論分析報告</p>
+    <h1 class="text-4xl font-bold mb-2">巴蕊花生 義式冰淇淋</h1>
+    <p class="text-stone-400 mt-2">斗六店（總店）+ 虎尾店 + 台中勤美店 三店分析</p>
+    <p class="text-stone-500 text-sm mt-4">分析日期：2026-04-14 ｜ 合計 1,212 則評論</p>
+    <p class="text-stone-500 text-sm">CKIP BERT WS/POS/NER（MLX C++）、BM25、人工分類</p>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-6 py-12 space-y-16">
+
+<!-- 綜合比較 -->
+<section>
+  <h2 class="text-2xl font-bold mb-6 border-b-2 border-amber-400 pb-2">一、三店綜合比較</h2>
+  <div class="bg-white rounded-xl shadow overflow-hidden mb-6">
+    <table class="w-full text-sm">
+      <thead class="bg-stone-100"><tr><th class="p-3 text-left">分店</th><th class="p-3 text-right">評論數</th><th class="p-3 text-right">星等</th><th class="p-3 text-right">有文字</th><th class="p-3 text-right">負評率</th><th class="p-3 text-right">回覆數</th><th class="p-3 text-left">開業</th></tr></thead>
+      <tbody class="divide-y divide-stone-100">
+        <tr class="bg-green-50"><td class="p-3 font-semibold">斗六店（總店）</td><td class="p-3 text-right">803</td><td class="p-3 text-right text-green-600 font-semibold">4.64★</td><td class="p-3 text-right">532</td><td class="p-3 text-right">4%</td><td class="p-3 text-right">4</td><td class="p-3">2018</td></tr>
+        <tr><td class="p-3">虎尾店</td><td class="p-3 text-right">264</td><td class="p-3 text-right">4.48★</td><td class="p-3 text-right">178</td><td class="p-3 text-right">10%</td><td class="p-3 text-right text-red-500">0</td><td class="p-3">2022</td></tr>
+        <tr class="bg-red-50"><td class="p-3">台中勤美店</td><td class="p-3 text-right">145</td><td class="p-3 text-right text-red-500">3.95★</td><td class="p-3 text-right">126</td><td class="p-3 text-right text-red-500 font-semibold">19%</td><td class="p-3 text-right text-green-600 font-semibold">57</td><td class="p-3">2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="bg-stone-100 rounded-xl p-5 text-sm text-stone-600 mb-6">
+    <p class="font-semibold mb-2">關鍵發現</p>
+    <ul class="list-disc pl-5 space-y-1">
+      <li>斗六總店 4.64★ 遙遙領先，負評僅 4%——品牌的根基</li>
+      <li>台中勤美店 3.95★ 最低，負評率 19% 是總店的近 5 倍——分店擴張的陣痛</li>
+      <li>台中店回覆率最高（57 則，39%），但星等最低——回覆無法彌補體驗落差</li>
+      <li>虎尾店 0 則回覆，但星等仍有 4.48★——產品力才是根本</li>
+    </ul>
+  </div>
+  <img src="pie_sentiment.webp" alt="三店正負評比例" class="w-full rounded-xl shadow mb-4" loading="lazy">
+  <p class="text-stone-400 text-xs mb-6 text-center">三店正負評比例</p>
+  <img src="pie_photos.webp" alt="三店附照片比例" class="w-full rounded-xl shadow mb-4" loading="lazy">
+  <p class="text-stone-400 text-xs text-center">三店附照片比例</p>
+</section>
+
+<!-- 斗六店 -->
+<section class="border-t-4 border-amber-400 pt-8">
+  <h2 class="text-2xl font-bold mb-6">二、斗六店（總店）——品牌的根基</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-green-600">4.64★</p><p class="text-xs text-stone-500">平均星等</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-amber-600">803</p><p class="text-xs text-stone-500">總評論</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-amber-600">243</p><p class="text-xs text-stone-500">提及「好吃」</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-amber-600">4%</p><p class="text-xs text-stone-500">負評率</p></div>
+  </div>
+
+  <h3 class="font-bold mb-3">🥜 花生是靈魂，口味是護城河</h3>
+  <p class="text-stone-600 text-sm mb-3">「口味」186 次、「冰淇淋」169 次、「花生」79 次、「開心果」36 次、「濃郁」38 次。口味多元且持續更新是核心競爭力。</p>
+  <div class="space-y-3 mb-6">
+    <div class="quote bg-amber-50 rounded-r-lg p-4">
+      <p class="text-sm text-stone-600 italic">「花生香氣非常濃郁，吃得出是真材實料，完全不是一般那種人工香精的味道。<strong>那股『炭焙花生』的深層香氣</strong>，咬下去的每一口都有種在吃濃縮花生醬冰沙的感覺」</p>
+    </div>
+    <div class="quote bg-amber-50 rounded-r-lg p-4">
+      <p class="text-sm text-stone-600 italic">「<strong>濟州柑橘優格超推，很清新的口味</strong>。優格從來不令人失望，藍莓味很濃郁」</p>
+    </div>
+    <div class="quote bg-amber-50 rounded-r-lg p-4">
+      <p class="text-sm text-stone-600 italic">「空間真的沒話說，寬敞明亮且非常乾淨⋯⋯<strong>門口還設有洗手台</strong>，吃冰前或吃完手黏黏的都可以直接清洗，細節加分！」</p>
+    </div>
+  </div>
+
+  <h3 class="font-bold mb-3">📉 年度走勢</h3>
+  <div class="bg-white rounded-xl shadow overflow-hidden mb-4">
+    <table class="w-full text-sm">
+      <tbody class="divide-y divide-stone-100">
+        <tr><td class="p-2">2018-2019</td><td class="p-2 text-right">96 則</td><td class="p-2 text-right">4.62★</td><td class="p-2 text-stone-500">草創期</td></tr>
+        <tr><td class="p-2">2020-2021</td><td class="p-2 text-right">103 則</td><td class="p-2 text-right">4.29★</td><td class="p-2 text-stone-500">疫情影響</td></tr>
+        <tr class="bg-amber-50"><td class="p-2 font-semibold">2022</td><td class="p-2 text-right font-semibold">352 則</td><td class="p-2 text-right text-green-600">4.83★</td><td class="p-2 text-stone-500">爆量年</td></tr>
+        <tr><td class="p-2">2023</td><td class="p-2 text-right">74 則</td><td class="p-2 text-right">4.43★</td><td class="p-2"></td></tr>
+        <tr><td class="p-2">2024</td><td class="p-2 text-right">112 則</td><td class="p-2 text-right">4.71★</td><td class="p-2 text-stone-500">回升</td></tr>
+        <tr><td class="p-2">2025</td><td class="p-2 text-right">53 則</td><td class="p-2 text-right text-red-500">4.26★</td><td class="p-2 text-stone-500">微降</td></tr>
+        <tr><td class="p-2">2026</td><td class="p-2 text-right">13 則</td><td class="p-2 text-right text-green-600">4.92★</td><td class="p-2"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <img src="douliu_monthly_volume_rating.webp" alt="斗六店月度" class="w-full rounded-xl shadow mb-4" loading="lazy">
+  <p class="text-stone-400 text-xs mb-6 text-center">斗六店 月度評論量與星等</p>
+  <img src="douliu_word_freq.webp" alt="斗六店詞頻" class="w-full rounded-xl shadow mb-4" loading="lazy">
+  <p class="text-stone-400 text-xs mb-6 text-center">斗六店 詞頻 TOP 30</p>
+
+  <h3 class="font-bold mb-3 text-red-600">⚠️ 負評焦點：打烊前態度</h3>
+  <div class="space-y-3 mb-4">
+    <div class="quote bg-red-50 rounded-r-lg p-4" style="border-left-color:#ef4444">
+      <p class="text-sm text-stone-600 italic">「營業時間到 8:00，我 7:32 進店時口味只剩三種，奶昔也全都沒了⋯⋯<strong>店員的態度真的讓人感受不到一點服務誠意</strong>」</p>
+    </div>
+    <div class="quote bg-red-50 rounded-r-lg p-4" style="border-left-color:#ef4444">
+      <p class="text-sm text-stone-600 italic">「冷冷的天店員也冷淡，<strong>一買完七點馬上收店像在趕客人</strong>」</p>
+    </div>
+  </div>
+</section>
+
+<!-- 虎尾店 -->
+<section class="border-t-4 border-amber-300 pt-8">
+  <h2 class="text-2xl font-bold mb-6">三、虎尾店——穩定的二號店</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-amber-600">4.48★</p><p class="text-xs text-stone-500">平均星等</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-amber-600">264</p><p class="text-xs text-stone-500">總評論</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-amber-600">80</p><p class="text-xs text-stone-500">提及「好吃」</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-red-500">0</p><p class="text-xs text-stone-500">店家回覆</p></div>
+  </div>
+  <div class="space-y-3 mb-6">
+    <div class="quote bg-amber-50 rounded-r-lg p-4">
+      <p class="text-sm text-stone-600 italic">「黑金剛花生，選用雲林在地花生，花生的膜是黑色的那種。<strong>整體吃起來帶點淡淡的鹹，花生的香氣比較厚實感</strong>」</p>
+    </div>
+    <div class="quote bg-amber-50 rounded-r-lg p-4">
+      <p class="text-sm text-stone-600 italic">「位於虎尾市場與福安宮之間⋯⋯<strong>鬧中取靜，很適合在這停下腳步嚐嚐甜點</strong>」</p>
+    </div>
+  </div>
+  <h3 class="font-bold mb-3 text-red-600">⚠️ 負評焦點：服務態度逐漸惡化</h3>
+  <div class="space-y-3 mb-4">
+    <div class="quote bg-red-50 rounded-r-lg p-4" style="border-left-color:#ef4444">
+      <p class="text-sm text-stone-600 italic">「<strong>只點 1 球即使店裡空無一人也不給入座</strong>」</p>
+    </div>
+    <div class="quote bg-red-50 rounded-r-lg p-4" style="border-left-color:#ef4444">
+      <p class="text-sm text-stone-600 italic">「第三次買⋯⋯其中鐵觀音可能是為了清庫存，另外兩種口味只有上面一點點，<strong>甜筒底下全是鐵觀音</strong>🫠 服務人員態度越來越差」</p>
+    </div>
+  </div>
+  <img src="huwei_monthly_volume_rating.webp" alt="虎尾店月度" class="w-full rounded-xl shadow mb-4" loading="lazy">
+  <p class="text-stone-400 text-xs mb-6 text-center">虎尾店 月度評論量與星等</p>
+  <img src="huwei_word_freq.webp" alt="虎尾店詞頻" class="w-full rounded-xl shadow mb-4" loading="lazy">
+  <p class="text-stone-400 text-xs text-center">虎尾店 詞頻 TOP 30</p>
+</section>
+
+<!-- 台中勤美店 -->
+<section class="border-t-4 border-red-400 pt-8">
+  <h2 class="text-2xl font-bold mb-6">四、台中勤美店——擴張的陣痛</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-red-500">3.95★</p><p class="text-xs text-stone-500">平均星等</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-amber-600">145</p><p class="text-xs text-stone-500">總評論</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-red-500">19%</p><p class="text-xs text-stone-500">負評率</p></div>
+    <div class="bg-white rounded-xl p-4 shadow text-center"><p class="text-2xl font-bold text-green-600">57</p><p class="text-xs text-stone-500">店家回覆（39%）</p></div>
+  </div>
+  <p class="text-stone-600 text-sm mb-4">2025 年開幕，是巴蕊首次離開雲林進軍都會區。星等從開幕的 4.08★ 下滑至 2026 年的 3.52★，負評率 19% 是總店的近 5 倍。</p>
+
+  <h3 class="font-bold mb-3 text-green-700">✅ 好評：產品力仍在</h3>
+  <div class="space-y-3 mb-6">
+    <div class="quote bg-green-50 rounded-r-lg p-4" style="border-left-color:#22c55e">
+      <p class="text-sm text-stone-600 italic">「花生香氣非常濃郁，吃得出是真材實料⋯⋯<strong>那股『炭焙花生』的深層香氣</strong>，咬下去的每一口都有種在吃濃縮花生醬冰沙的感覺」</p>
+    </div>
+    <div class="quote bg-green-50 rounded-r-lg p-4" style="border-left-color:#22c55e">
+      <p class="text-sm text-stone-600 italic">「竟然有<strong>刈包冰淇淋</strong>好特別！立刻買刈包香草冰淇淋」</p>
+    </div>
+  </div>
+
+  <h3 class="font-bold mb-3 text-red-600">⚠️ 負評：服務與氣氛是致命傷</h3>
+  <div class="space-y-3 mb-6">
+    <div class="quote bg-red-50 rounded-r-lg p-4" style="border-left-color:#ef4444">
+      <p class="text-sm text-stone-600 italic">「蠻難吃的，而且<strong>店裡氣氛很凝重，內用感覺很有壓力</strong>☹️」</p>
+      <p class="text-xs text-stone-400 mt-2">— 1★，2026-04-13</p>
+    </div>
+    <div class="quote bg-red-50 rounded-r-lg p-4" style="border-left-color:#ef4444">
+      <p class="text-sm text-stone-600 italic">「<strong>價格對不起品質</strong>😵‍💫」</p>
+    </div>
+  </div>
+
+  <div class="bg-stone-100 rounded-xl p-5 text-sm text-stone-600 mb-6">
+    <p class="font-semibold mb-2">店家回覆分析</p>
+    <p>台中店有 57 則回覆（39%），是三店中最積極的。但回覆風格偏制式化：「非常抱歉⋯⋯我們已立即檢討並加強⋯⋯」。相比老食人 Roger 老闆的真誠個人風格，這種模板式回覆的效果有限——星等仍在下滑。</p>
+  </div>
+
+  <img src="taichung_monthly_volume_rating.webp" alt="台中店月度" class="w-full rounded-xl shadow mb-4" loading="lazy">
+  <p class="text-stone-400 text-xs mb-6 text-center">台中勤美店 月度評論量與星等</p>
+  <img src="taichung_word_freq.webp" alt="台中店詞頻" class="w-full rounded-xl shadow mb-4" loading="lazy">
+  <p class="text-stone-400 text-xs text-center">台中勤美店 詞頻 TOP 30</p>
+</section>
+
+<!-- 負評比較 -->
+<section>
+  <h2 class="text-2xl font-bold mb-6 border-b-2 border-red-400 pb-2">五、三店負評比較</h2>
+  <div class="grid sm:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white rounded-xl p-4 shadow"><h3 class="font-bold text-sm mb-2">斗六店（29 則負評）</h3><p class="text-xs text-stone-600">打烊前態度差、口味選擇少、冰淇淋結構問題</p></div>
+    <div class="bg-white rounded-xl p-4 shadow"><h3 class="font-bold text-sm mb-2">虎尾店（27 則負評）</h3><p class="text-xs text-stone-600">不給入座、清庫存塞口味、態度越來越差</p></div>
+    <div class="bg-white rounded-xl p-4 shadow border-2 border-red-300"><h3 class="font-bold text-sm mb-2 text-red-600">台中店（28 則負評）</h3><p class="text-xs text-stone-600">氣氛凝重、價格不符品質、服務壓力感</p></div>
+  </div>
+  <div class="bg-stone-100 rounded-xl p-5 text-sm text-stone-600">
+    <p class="font-semibold mb-2">共通模式：「服務態度」是三店共同的弱點</p>
+    <p>三家店的負評都指向同一個問題——<strong>店員態度</strong>。斗六店是「打烊前趕客」，虎尾店是「不給入座」「清庫存」，台中店是「氣氛凝重」「有壓力」。產品力沒有問題，但服務體驗正在侵蝕品牌價值。</p>
+  </div>
+  <div class="grid sm:grid-cols-3 gap-4 mt-6">
+    <div><img src="douliu_neg_word_freq.webp" alt="斗六負評詞頻" class="w-full rounded-xl shadow" loading="lazy"><p class="text-stone-400 text-xs mt-2 text-center">斗六店</p></div>
+    <div><img src="huwei_neg_word_freq.webp" alt="虎尾負評詞頻" class="w-full rounded-xl shadow" loading="lazy"><p class="text-stone-400 text-xs mt-2 text-center">虎尾店</p></div>
+    <div><img src="taichung_neg_word_freq.webp" alt="台中負評詞頻" class="w-full rounded-xl shadow" loading="lazy"><p class="text-stone-400 text-xs mt-2 text-center">台中勤美店</p></div>
+  </div>
+</section>
+
+<!-- BM25 -->
+<section>
+  <h2 class="text-2xl font-bold mb-6 border-b-2 border-amber-400 pb-2">六、BM25 關鍵詞分析</h2>
+  <h3 class="font-bold mb-3">斗六店</h3>
+  <div class="space-y-4 mb-8">
+    <img src="douliu_bm25_unigram.webp" class="w-full rounded-xl shadow" loading="lazy">
+    <img src="douliu_bm25_2gram.webp" class="w-full rounded-xl shadow" loading="lazy">
+  </div>
+  <h3 class="font-bold mb-3">虎尾店</h3>
+  <div class="space-y-4 mb-8">
+    <img src="huwei_bm25_unigram.webp" class="w-full rounded-xl shadow" loading="lazy">
+    <img src="huwei_bm25_2gram.webp" class="w-full rounded-xl shadow" loading="lazy">
+  </div>
+  <h3 class="font-bold mb-3">台中勤美店</h3>
+  <div class="space-y-4">
+    <img src="taichung_bm25_unigram.webp" class="w-full rounded-xl shadow" loading="lazy">
+    <img src="taichung_bm25_2gram.webp" class="w-full rounded-xl shadow" loading="lazy">
+  </div>
+</section>
+
+<!-- 結論 -->
+<section class="bg-stone-900 text-white -mx-6 px-6 py-12 rounded-xl">
+  <h2 class="text-2xl font-bold mb-6 border-b-2 border-amber-400 pb-2">結論</h2>
+  <div class="space-y-4 text-stone-300">
+    <div class="flex gap-3"><span class="text-amber-400 text-xl">①</span><p><strong class="text-white">花生冰淇淋是品牌靈魂</strong>：「炭焙花生的深層香氣」是客人最常描述的體驗，也是與其他義式冰淇淋店的核心差異化</p></div>
+    <div class="flex gap-3"><span class="text-amber-400 text-xl">②</span><p><strong class="text-white">口味多元是護城河</strong>：持續更新口味（柚見金萱、濟州柑橘優格、刈包冰淇淋），讓客人每次來都有新鮮感</p></div>
+    <div class="flex gap-3"><span class="text-amber-400 text-xl">③</span><p><strong class="text-white">分店擴張正在稀釋品牌</strong>：斗六 4.64★ → 虎尾 4.48★ → 台中 3.95★，離總店越遠星等越低</p></div>
+    <div class="flex gap-3"><span class="text-amber-400 text-xl">④</span><p><strong class="text-white">服務態度是三店共同弱點</strong>：「趕客」「不給入座」「氣氛凝重」——產品力沒問題，但服務正在侵蝕品牌</p></div>
+    <div class="flex gap-3"><span class="text-amber-400 text-xl">⑤</span><p><strong class="text-white">台中店是關鍵戰場</strong>：首次進軍都會區，19% 負評率和持續下滑的星等是警訊。回覆率高但風格制式化，需要更真誠的溝通</p></div>
+    <div class="flex gap-3"><span class="text-amber-400 text-xl">⑥</span><p><strong class="text-white">雲林在地品牌的都會化挑戰</strong>：在斗六和虎尾，「巴蕊」是在地驕傲；在台中勤美，它只是眾多冰淇淋店之一。競爭強度完全不同</p></div>
+  </div>
+  <p class="text-amber-400 mt-8 text-lg font-semibold">「花生香氣非常濃郁，吃得出是真材實料——但離開雲林之後，光靠花生還不夠。」</p>
+</section>
+
+</main>
+
+<footer class="bg-stone-100 py-6 text-center text-stone-400 text-xs">
+  <p>Savorithm 評論分析系統 ｜ CKIP BERT + BM25 ｜ 2026-04-14</p>
+</footer>
+
+</body>
+</html>

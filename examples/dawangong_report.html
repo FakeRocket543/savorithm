@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大碗公牛肉麵 深度評論分析報告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans">
+
+<!-- Hero -->
+<header class="bg-gradient-to-br from-red-900 via-gray-900 to-gray-950 py-16 px-4 text-center border-b border-red-800/40">
+  <h1 class="text-4xl md:text-5xl font-bold mb-4">🍜 大碗公牛肉麵<br class="md:hidden"> 深度評論分析報告</h1>
+  <div class="mt-4 text-gray-400 space-y-1 text-sm">
+    <p>分析日期：2026-04-07</p>
+    <p>資料來源：Google Maps 749 則評論（2017-02-20 ~ 2026-04-04）</p>
+    <p>分析工具：CKIP BERT WS/POS/NER（MLX C++）、BM25、人工分類</p>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 py-12 space-y-16">
+
+<!-- 一、基本數據 -->
+<section>
+  <h2 class="text-2xl font-bold text-red-400 mb-6">一、基本數據</h2>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">指標</th><th class="px-4 py-2 text-left">值</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2">總評論</td><td class="px-4 py-2">749</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">有文字</td><td class="px-4 py-2">565（75%）</td></tr>
+        <tr><td class="px-4 py-2">平均星等</td><td class="px-4 py-2">4.35</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">5★</td><td class="px-4 py-2">612（81%）</td></tr>
+        <tr><td class="px-4 py-2">4★</td><td class="px-4 py-2">11（1%）</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">3★</td><td class="px-4 py-2">10（1%）</td></tr>
+        <tr><td class="px-4 py-2">2★</td><td class="px-4 py-2">9（1%）</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">1★</td><td class="px-4 py-2">107（14%）</td></tr>
+        <tr><td class="px-4 py-2">日期範圍</td><td class="px-4 py-2">2017-02-20 ~ 2026-04-04</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">店家回覆</td><td class="px-4 py-2">0 則</td></tr>
+        <tr><td class="px-4 py-2">附照片</td><td class="px-4 py-2">54 則</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="text-lg font-semibold mt-8 mb-3">月度評論量與星等趨勢</h3>
+  <img src="monthly_volume_rating.webp" alt="月度評論量與星等趨勢" class="rounded-lg border border-gray-700 w-full">
+
+  <h3 class="text-lg font-semibold mt-8 mb-3">星等分佈異常</h3>
+  <p class="text-gray-300 leading-relaxed">這家店的星等分佈呈現<strong class="text-yellow-400">極端兩極化</strong>：81% 給 5★、14% 給 1★，中間的 2-4★ 合計僅佔 4%。這是典型的「迷因店家」特徵——大量網友因為網路話題而來灌 5★ 反串評論，而真正消費過的客人則傾向給出極低分。</p>
+</section>
+
+<!-- 二、評論分類總覽 -->
+<section>
+  <h2 class="text-2xl font-bold text-red-400 mb-6">二、評論分類總覽</h2>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">類別</th><th class="px-4 py-2 text-left">數量</th><th class="px-4 py-2 text-left">平均星等</th><th class="px-4 py-2 text-left">說明</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2">🎭 反串經典</td><td class="px-4 py-2">10</td><td class="px-4 py-2">5.0★</td><td class="px-4 py-2">給 5★ 但內容明確表達難吃</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">📖 文學創作</td><td class="px-4 py-2">13</td><td class="px-4 py-2">5.0★</td><td class="px-4 py-2">長篇小說/散文/哲學體裁</td></tr>
+        <tr><td class="px-4 py-2">🛞 輪胎梗</td><td class="px-4 py-2">66</td><td class="px-4 py-2">4.1★</td><td class="px-4 py-2">提及輪胎/米其林/機油/補胎</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">📢「不能只有我吃到」</td><td class="px-4 py-2">30</td><td class="px-4 py-2">5.0★</td><td class="px-4 py-2">使用此經典句式</td></tr>
+        <tr><td class="px-4 py-2">📺 YouTuber 效應</td><td class="px-4 py-2">22</td><td class="px-4 py-2">4.8★</td><td class="px-4 py-2">因丁特/踩雷女王等影片而來</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">🥲 同情老闆</td><td class="px-4 py-2">25</td><td class="px-4 py-2">3.9★</td><td class="px-4 py-2">對老闆表達同情或鼓勵</td></tr>
+        <tr><td class="px-4 py-2">✅ 真心好評</td><td class="px-4 py-2">120</td><td class="px-4 py-2">5.0★</td><td class="px-4 py-2">真正覺得好吃的評論</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">❌ 真心負評</td><td class="px-4 py-2">66</td><td class="px-4 py-2">1.1★</td><td class="px-4 py-2">真正消費後的負面體驗</td></tr>
+        <tr><td class="px-4 py-2">😱 被騙受害者</td><td class="px-4 py-2">18</td><td class="px-4 py-2">1.2★</td><td class="px-4 py-2">看到高評分被騙來吃的</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">⭐ 純灌星（無文字）</td><td class="px-4 py-2">184</td><td class="px-4 py-2">4.5★</td><td class="px-4 py-2">只給星等沒留言</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 三、各類別精選名句 -->
+<section>
+  <h2 class="text-2xl font-bold text-red-400 mb-6">三、各類別精選名句</h2>
+
+  <!-- 反串經典 -->
+  <h3 class="text-xl font-semibold text-yellow-400 mb-4">🎭 反串經典</h3>
+  <div class="space-y-4 mb-10">
+    <blockquote class="border-l-4 border-yellow-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Au Ryan</strong>（5★，2026-02-17）</p>
+      <p class="mt-1">「湯頭味道不算好吃 麵正常 牛肉橡膠。<strong class="text-yellow-300">你可以不吃 但一定要請朋友吃</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-yellow-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>kobe pett</strong>（5★，2024-02-10）</p>
+      <p class="mt-1">「這是我吃過最難吃的牛肉麵。肉真的跟輪胎一樣硬。機油湯頭 超臭」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-yellow-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>盧志強</strong>（5★，2025-09-13）</p>
+      <p class="mt-1">「肉也像是二十年前的 非常死鹹又非常硬 似乎是跟旁邊輪胎行進貨的 感覺我的咀嚼肌變得更發達了 湯裡的油耗味非常重⋯⋯麵體軟爛又吸滿湯汁 讓人一口接一口的吐掉 <strong class="text-yellow-300">想要節食的人歡迎嘗試</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-yellow-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>柯艾伶</strong>（5★，2025-09-06）</p>
+      <p class="mt-1">「服務很棒，客人吃了第一口麵之後，都很想趕快把錢掏出來，幫助老闆早點過上退休生活，並<strong class="text-yellow-300">希望他這輩子體驗過小吃業後，下輩子能改行做輪胎，生意一定會比現在更火旺</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-yellow-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Realist</strong>（5★，2026-03-03）</p>
+      <p class="mt-1">「我根本沒吃過。只看過踩雷女王的影片。但我直覺很準，因為我是美女。先給五顆星再說。等我吃過後我會來改評論 啾啾」</p>
+    </blockquote>
+  </div>
+
+  <!-- 文學創作派 -->
+  <h3 class="text-xl font-semibold text-purple-400 mb-4">📖 文學創作派</h3>
+  <div class="space-y-4 mb-10">
+    <blockquote class="border-l-4 border-purple-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>金信樵</strong>（5★，2024-05-12）</p>
+      <p class="mt-1">「世界上若沒有大碗公牛肉麵，對於人類的改變可想而知。<strong class="text-purple-300">杜甫</strong>在不經意間這樣說過，交情老更親。如果仔細思考大碗公牛肉麵，會發現其中蘊含的深遠意義。<strong class="text-purple-300">雨果</strong>說過一句著名的話，人類的心靈需要理想甚於需要物質⋯⋯」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-purple-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>陳麒仁</strong>（5★，2025-04-20）</p>
+      <p class="mt-1">「在陰晴不定的日子中招待朋友來到這牛肉麵的聖堂。進入店內，昏暗而不見天日⋯⋯端上桌的那刻，店內的氣氛開始有所改變，眼前的那碗不可言喻之物，竟使<strong class="text-purple-300">友人整整5分鐘說不出話</strong>！」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-purple-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>꧂ TOFU꧁</strong>（5★，2025-02-05）</p>
+      <p class="mt-1">「這碗牛肉麵，如同一場未能完美綻放的浪漫邂逅，帶著些許的遺憾與淡淡的失落。麵條在口中游移，卻未能觸及那份應有的柔韌與香氣，<strong class="text-purple-300">仿佛一段戀情，總是略顯遲疑，難以融入心底的深處</strong>⋯⋯」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-purple-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>無</strong>（5★，2024-03-07）——最長評論（304 字）</p>
+      <p class="mt-1">「噢我的朋友們，看看我找到了什麼！是傳統非洲美食橡皮兒燉麵⋯⋯有一位貧窮的非洲女人<strong class="text-purple-300">『達克拉雅祐羽飛兒·薩林』</strong>，擁有九十四個孩子，而他的丈夫<strong class="text-purple-300">『洪都拉菲達·卡米卡』</strong>死於一場戰爭⋯⋯」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-purple-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Rex Chang</strong>（5★，2024-03-30）</p>
+      <p class="mt-1">「牛肉麵的口感酥脆，如同在雲層中咬下一口棉花糖，帶著輕盈的酸酸甜甜的輪胎味，讓人回味無窮」</p>
+    </blockquote>
+  </div>
+
+  <!-- 輪胎宇宙 -->
+  <h3 class="text-xl font-semibold text-gray-300 mb-4">🛞 輪胎宇宙</h3>
+  <img src="tire_beef_noodle.webp" alt="輪胎宇宙：變成輪胎的牛肉" class="rounded-lg border border-gray-700 w-full mb-4">
+  <p class="text-gray-400 mb-4">「輪胎」是這家店最具代表性的迷因關鍵詞，共出現在 <strong class="text-white">66 則評論</strong>中，衍生出完整的「輪胎宇宙觀」：</p>
+  <div class="space-y-4 mb-10">
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>黃勁德</strong>（5★，2025-12-08）</p>
+      <p class="mt-1">「米其林等級牛肉麵 <strong class="text-gray-100">這輩子沒吃過米其林輪胎來這邊就對了</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>brian LIEN</strong>（5★，2024-04-27）</p>
+      <p class="mt-1">「牛肉啊，就像是輪胎的鋼絲，綿密而彈牙⋯⋯麵條就像是輪胎的胎面，平滑而有光澤⋯⋯總之，<strong class="text-gray-100">這碗牛肉麵就像是一個完美的輪胎</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Lei</strong>（5★，2024-03-13）</p>
+      <p class="mt-1">「開車回家的路上，輪胎莫名其妙爆胎，在陷入絕望之際，突然想起：『啊！還有牛肉麵呀！』趕緊拿出來<strong class="text-gray-100">填補我那報廢的輪胎，最後輪胎竟然跟全新的一樣</strong>！」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>郭卜榮</strong>（5★，2022-10-12）</p>
+      <p class="mt-1">「路上輪胎爆胎了，竟然這個牛肉可以拿來補胎！！！」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>吳俊傑</strong>（5★，2025-06-21）</p>
+      <p class="mt-1">「優秀且專業的<strong class="text-gray-100">輪胎經銷商</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Derek Chen</strong>（5★，2023-11-11）</p>
+      <p class="mt-1">「既然是輪胎相關產業，<strong class="text-gray-100">米其林至少要給個必比登推薦吧</strong>！」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>MAX</strong>（5★，2024-03-10）</p>
+      <p class="mt-1">「台北唯一榮獲<strong class="text-gray-100">米其林輪胎三星</strong>的牛肉麵店。一生必吃」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Timmy</strong>（5★，2024-04-03）</p>
+      <p class="mt-1">「為了支持老闆，我從開車台中北上<strong class="text-gray-100">購買了4顆輪胎及4罐機油</strong>。意想不到的收穫就是品質保證非常好」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-gray-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>可以看海外</strong>（5★，2025-01-19）</p>
+      <p class="mt-1">「推薦大碗公牛胎麵 #輪胎 #古蹟 #美食」</p>
+    </blockquote>
+  </div>
+
+  <!-- 不能只有我吃到 -->
+  <h3 class="text-xl font-semibold text-orange-400 mb-4">📢「不能只有我吃到」經典句式</h3>
+  <img src="fake_five_star.webp" alt="反串經典：不能只有我吃到" class="rounded-lg border border-gray-700 w-full mb-4">
+  <p class="text-gray-400 mb-4">此句式共出現 <strong class="text-white">30 次</strong>，已成為此店的標誌性 meme：</p>
+  <div class="overflow-x-auto mb-10">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">年份</th><th class="px-4 py-2 text-left">使用次數</th><th class="px-4 py-2 text-left">代表</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2">2020-2021</td><td class="px-4 py-2">2</td><td class="px-4 py-2">「不能只有我吃到！」（L. K.）</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2022</td><td class="px-4 py-2">8</td><td class="px-4 py-2">「牛肉還能拿來打乒乓球，好吃又好玩！」（鄭世傳）</td></tr>
+        <tr><td class="px-4 py-2">2023</td><td class="px-4 py-2">12</td><td class="px-4 py-2">「看完特哥的影片來的，這麼好吃不能只有我吃到」（吉幸長魏延）</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2024</td><td class="px-4 py-2">6</td><td class="px-4 py-2">「好東西就是要分享，不能只有我吃到」（陳政諭）</td></tr>
+        <tr><td class="px-4 py-2">2025</td><td class="px-4 py-2">2</td><td class="px-4 py-2">「我為了滿足我自己的好奇心跑來吃，不能只有我吃到」（李冠堯）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- YouTuber 效應 -->
+  <h3 class="text-xl font-semibold text-blue-400 mb-4">📺 YouTuber 效應</h3>
+  <div class="overflow-x-auto mb-4">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">來源</th><th class="px-4 py-2 text-left">提及次數</th><th class="px-4 py-2 text-left">影響</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2">丁特 / 特哥</td><td class="px-4 py-2">10+</td><td class="px-4 py-2">2023-11 月爆量的主因</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">踩雷女王（片山珍珍）</td><td class="px-4 py-2">5+</td><td class="px-4 py-2">持續帶來新客</td></tr>
+        <tr><td class="px-4 py-2">其他影片 / 網紅</td><td class="px-4 py-2">7+</td><td class="px-4 py-2">長尾效應</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="bg-blue-900/20 border border-blue-800/40 rounded-lg p-4 mb-4">
+    <p class="text-blue-300 font-semibold">2023 年 11 月是關鍵轉折點：單月湧入 119 則評論（其中 114 則 5★），幾乎可以確定是丁特影片上線後的效應。此前這家店年均僅 10-20 則評論。</p>
+  </div>
+  <div class="space-y-4 mb-10">
+    <blockquote class="border-l-4 border-blue-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>張翔</strong>（5★，2023-10-09）</p>
+      <p class="mt-1">「一顆星給這間店，<strong class="text-blue-300">四顆星給踩雷女王片山珍珍</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-blue-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Billy Fu</strong>（5★，2023-11-10）</p>
+      <p class="mt-1">「看到丁特的影片才過來看留言⋯⋯伯伯一定是很認真的在料理；<strong class="text-blue-300">如果可以 是不是可以給伯伯建議，改善牛肉跟湯的問題</strong>，我們也不忍心看到伯伯難過失望 對吧」</p>
+    </blockquote>
+  </div>
+
+  <!-- 同情老闆 -->
+  <h3 class="text-xl font-semibold text-cyan-400 mb-4">🥲 同情老闆派</h3>
+  <p class="text-gray-400 mb-4">在反串浪潮中，有一群人真心為老闆感到不捨：</p>
+  <div class="space-y-4 mb-10">
+    <blockquote class="border-l-4 border-cyan-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>5u</strong>（1★，2025-12-04）</p>
+      <p class="mt-1">「阿伯很好，但是整碗麵都是機油味，<strong class="text-cyan-300">拜託大家不要再被騙來吃了又留一碗完整的麵，阿伯一定很難過</strong>⋯不要再騙評論了」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-cyan-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Bang Thai</strong>（5★，2026-01-15）</p>
+      <p class="mt-1">「拜託網友不要惡意一星攻擊店家。<strong class="text-cyan-300">這樣的古早味已經不多，希望能繼續維持下去</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-cyan-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Stanley Peng</strong>（1★，2025-12-29）</p>
+      <p class="mt-1">「我真的不忍心不留言。我是看著評價路過進來，但人人口中的機油湯頭及絲絲入扣的肉乾，我扎扎實實的體驗到了。但<strong class="text-cyan-300">我服務給兩分，因為老闆態度還算不錯</strong>。我的$180就這樣飛了」</p>
+    </blockquote>
+  </div>
+
+  <!-- 被騙受害者 -->
+  <h3 class="text-xl font-semibold text-rose-400 mb-4">😱 被騙受害者</h3>
+  <p class="text-gray-400 mb-4">看到 4.35★ 高分而實際前往消費，結果大失所望的人：</p>
+  <div class="space-y-4 mb-10">
+    <blockquote class="border-l-4 border-rose-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>鍾晉華</strong>（1★，2026-01-05）</p>
+      <p class="mt-1">「拜託不要反串，沒細看評論就進去了結果後悔無比，老闆還先問我吃得完嗎現在廚餘很難處理⋯⋯<strong class="text-rose-300">祝每一位反串的人此生常常吃到同樣味道的午餐</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-rose-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>May Chen</strong>（1★，2026-02-05）</p>
+      <p class="mt-1">「牛肉麵 一股非常不新鮮的味道+油耗味 機油味。買了兩碗 吃了半口 <strong class="text-rose-300">直接進垃圾桶</strong>。有些評論在反串 故意給很高分吧？」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-rose-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>888 aissa</strong>（1★，2025-12-08）</p>
+      <p class="mt-1">「真的建議反串文要改評價，不然<strong class="text-rose-300">外國朋友誤入會嚐到地獄</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-rose-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>劉廷</strong>（1★，2025-12-13）</p>
+      <p class="mt-1">「被評價騙來吃的！目前木柵 新店<strong class="text-rose-300">我吃過最難吃的牛肉麵</strong>！」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-rose-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>Frank Chen</strong>（1★，2025-12-29）</p>
+      <p class="mt-1">「奉勸各位還是貨比三家吧！<strong class="text-rose-300">真不知道4.3顆星是怎麼來的？</strong>算了，我還是留一點口德吧！」</p>
+    </blockquote>
+  </div>
+
+  <!-- 真心好評 -->
+  <h3 class="text-xl font-semibold text-green-400 mb-4">✅ 真心好評（確實有人覺得好吃）</h3>
+  <p class="text-gray-400 mb-4">在迷因海中，仍有 <strong class="text-white">120 則</strong>看起來是真心覺得好吃的評論：</p>
+  <div class="space-y-4 mb-4">
+    <blockquote class="border-l-4 border-green-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>廖偉哲</strong>（5★，2026-03-07）</p>
+      <p class="mt-1">「木柵在地人的台式浪漫，真的會吃到撐！牛肉塊給得很大方，燉得軟硬適中⋯⋯湯頭是偏濃郁的紅燒風格，帶點中藥香氣⋯⋯<strong class="text-green-300">一碗不到200元，CP值真的很高</strong>」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-green-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>in M</strong>（5★，2024-06-21）</p>
+      <p class="mt-1">「<strong class="text-green-300">蹄花麵是好吃的 不是反串 是真的是好吃ㄉ！</strong>」</p>
+    </blockquote>
+  </div>
+  <p class="text-gray-400 mb-10">多則評論指出<strong class="text-white">蹄花麵和炸醬麵其實不錯</strong>，問題主要出在牛肉麵的牛肉和湯頭。</p>
+
+  <!-- 真心負評 -->
+  <h3 class="text-xl font-semibold text-red-400 mb-4">❌ 真心負評——核心問題</h3>
+  <img src="neg_word_freq.webp" alt="負評詞頻分佈" class="rounded-lg border border-gray-700 w-full mb-4">
+  <p class="text-gray-400 mb-4">66 則真心負評揭示的實際問題：</p>
+  <div class="overflow-x-auto mb-4">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">痛點</th><th class="px-4 py-2 text-left">提及次數</th><th class="px-4 py-2 text-left">關鍵詞</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2">油耗味 / 湯頭</td><td class="px-4 py-2">20+</td><td class="px-4 py-2">油耗、機油味、不新鮮、死鹹</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">牛肉口感</td><td class="px-4 py-2">18+</td><td class="px-4 py-2">硬、柴、乾、像輪胎、嚼不動</td></tr>
+        <tr><td class="px-4 py-2">環境衛生</td><td class="px-4 py-2">10+</td><td class="px-4 py-2">暗、髒、蟑螂、古蹟感</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">價格</td><td class="px-4 py-2">8</td><td class="px-4 py-2">中碗190偏貴、CP值低</td></tr>
+        <tr><td class="px-4 py-2">其他餐點</td><td class="px-4 py-2">5+</td><td class="px-4 py-2">炒飯油耗、酸辣湯水水的</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="space-y-4 mb-10">
+    <blockquote class="border-l-4 border-red-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>蚊子</strong>（1★，2026-01-25）</p>
+      <p class="mt-1">「店裡面暗暗的好像鬼屋一樣，豬耳朵毛沒有處理乾淨⋯⋯豆乾我看最少滷過一個禮拜了，吃起來明顯一個油臭味」</p>
+    </blockquote>
+    <blockquote class="border-l-4 border-red-500 pl-4 bg-gray-900/50 rounded-r-lg py-3 pr-4">
+      <p class="text-gray-300"><strong>無名</strong>（1★，2026-04-04）——最新負評</p>
+      <p class="mt-1">「那些留5星的，拜託不要再反串了，今天吃了炸醬麵和牛肉麵，<strong class="text-red-300">油耗味非常重</strong>」</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- 四、時間線 -->
+<section>
+  <h2 class="text-2xl font-bold text-red-400 mb-6">四、時間線：一家小店如何變成迷因聖地</h2>
+  <div class="overflow-x-auto mb-6">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">時期</th><th class="px-4 py-2 text-left">年均評論</th><th class="px-4 py-2 text-left">特徵</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2">2017-2021</td><td class="px-4 py-2">~12 則</td><td class="px-4 py-2">正常小店，1★居多，真實負評為主</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2022</td><td class="px-4 py-2">131 則</td><td class="px-4 py-2">開始被網路發現，「不能只有我吃到」句式出現</td></tr>
+        <tr class="bg-yellow-900/20 font-semibold"><td class="px-4 py-2">2023-11</td><td class="px-4 py-2">單月 119 則</td><td class="px-4 py-2">丁特影片引爆，5★灌入 114 則</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2024</td><td class="px-4 py-2">187 則</td><td class="px-4 py-2">持續迷因效應，文學創作體大量出現</td></tr>
+        <tr><td class="px-4 py-2">2025</td><td class="px-4 py-2">142 則</td><td class="px-4 py-2">熱度稍降，「被騙受害者」開始增加</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2026（至今）</td><td class="px-4 py-2">50 則</td><td class="px-4 py-2">反串與反反串並存，星等微降至 4.02★</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="text-lg font-semibold mb-3">年度星等與評論量</h3>
+  <div class="overflow-x-auto mb-4">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">年</th><th class="px-4 py-2 text-right">評論數</th><th class="px-4 py-2 text-right">5★</th><th class="px-4 py-2 text-right">1★</th><th class="px-4 py-2 text-right">5★佔比</th><th class="px-4 py-2 text-right">1★佔比</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2">2017</td><td class="px-4 py-2 text-right">8</td><td class="px-4 py-2 text-right">0</td><td class="px-4 py-2 text-right">7</td><td class="px-4 py-2 text-right">0%</td><td class="px-4 py-2 text-right text-red-400">88%</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2018</td><td class="px-4 py-2 text-right">9</td><td class="px-4 py-2 text-right">2</td><td class="px-4 py-2 text-right">5</td><td class="px-4 py-2 text-right">22%</td><td class="px-4 py-2 text-right text-red-400">56%</td></tr>
+        <tr><td class="px-4 py-2">2019</td><td class="px-4 py-2 text-right">13</td><td class="px-4 py-2 text-right">6</td><td class="px-4 py-2 text-right">5</td><td class="px-4 py-2 text-right">46%</td><td class="px-4 py-2 text-right">38%</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2020</td><td class="px-4 py-2 text-right">11</td><td class="px-4 py-2 text-right">4</td><td class="px-4 py-2 text-right">7</td><td class="px-4 py-2 text-right">36%</td><td class="px-4 py-2 text-right text-red-400">64%</td></tr>
+        <tr><td class="px-4 py-2">2021</td><td class="px-4 py-2 text-right">17</td><td class="px-4 py-2 text-right">6</td><td class="px-4 py-2 text-right">9</td><td class="px-4 py-2 text-right">35%</td><td class="px-4 py-2 text-right text-red-400">53%</td></tr>
+        <tr class="bg-yellow-900/20"><td class="px-4 py-2 font-semibold">2022</td><td class="px-4 py-2 text-right">131</td><td class="px-4 py-2 text-right">120</td><td class="px-4 py-2 text-right">10</td><td class="px-4 py-2 text-right text-yellow-400">92%</td><td class="px-4 py-2 text-right">8%</td></tr>
+        <tr class="bg-yellow-900/20"><td class="px-4 py-2 font-semibold">2023</td><td class="px-4 py-2 text-right">181</td><td class="px-4 py-2 text-right">168</td><td class="px-4 py-2 text-right">11</td><td class="px-4 py-2 text-right text-yellow-400">93%</td><td class="px-4 py-2 text-right">6%</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2024</td><td class="px-4 py-2 text-right">187</td><td class="px-4 py-2 text-right">163</td><td class="px-4 py-2 text-right">18</td><td class="px-4 py-2 text-right">87%</td><td class="px-4 py-2 text-right">10%</td></tr>
+        <tr><td class="px-4 py-2">2025</td><td class="px-4 py-2 text-right">142</td><td class="px-4 py-2 text-right">107</td><td class="px-4 py-2 text-right">25</td><td class="px-4 py-2 text-right">75%</td><td class="px-4 py-2 text-right text-red-400">18%</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2026</td><td class="px-4 py-2 text-right">50</td><td class="px-4 py-2 text-right">36</td><td class="px-4 py-2 text-right">10</td><td class="px-4 py-2 text-right">72%</td><td class="px-4 py-2 text-right text-red-400">20%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-gray-400 leading-relaxed"><strong class="text-white">趨勢</strong>：反串 5★ 的比例從 2023 年高峰的 93% 逐年下降，1★ 比例從 6% 上升到 20%，顯示「被騙受害者」的反撲力道正在增強。</p>
+</section>
+
+<!-- 五、BM25 關鍵詞分析 -->
+<section>
+  <h2 class="text-2xl font-bold text-red-400 mb-6">五、BM25 關鍵詞分析</h2>
+
+  <h3 class="text-lg font-semibold mb-3">整體詞頻圖</h3>
+  <img src="word_freq.webp" alt="詞頻分佈" class="rounded-lg border border-gray-700 w-full mb-6">
+
+  <h3 class="text-lg font-semibold mb-3">詞頻 TOP 15</h3>
+  <div class="overflow-x-auto mb-6">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">#</th><th class="px-4 py-2 text-left">詞</th><th class="px-4 py-2 text-right">次數</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2">1</td><td class="px-4 py-2">吃</td><td class="px-4 py-2 text-right">287</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">2</td><td class="px-4 py-2">牛肉麵</td><td class="px-4 py-2 text-right">211</td></tr>
+        <tr><td class="px-4 py-2">3</td><td class="px-4 py-2">好吃</td><td class="px-4 py-2 text-right">108</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">4</td><td class="px-4 py-2">牛肉</td><td class="px-4 py-2 text-right">101</td></tr>
+        <tr><td class="px-4 py-2">5</td><td class="px-4 py-2">真的</td><td class="px-4 py-2 text-right">74</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">6</td><td class="px-4 py-2">味道</td><td class="px-4 py-2 text-right">74</td></tr>
+        <tr><td class="px-4 py-2">7</td><td class="px-4 py-2">湯頭</td><td class="px-4 py-2 text-right">57</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">8</td><td class="px-4 py-2">老闆</td><td class="px-4 py-2 text-right">49</td></tr>
+        <tr><td class="px-4 py-2">9</td><td class="px-4 py-2">大</td><td class="px-4 py-2 text-right">48</td></tr>
+        <tr class="bg-yellow-900/20 font-semibold"><td class="px-4 py-2">10</td><td class="px-4 py-2 text-yellow-400">輪胎</td><td class="px-4 py-2 text-right text-yellow-400">47</td></tr>
+        <tr><td class="px-4 py-2">11</td><td class="px-4 py-2">非常</td><td class="px-4 py-2 text-right">42</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">12</td><td class="px-4 py-2">難吃</td><td class="px-4 py-2 text-right">35</td></tr>
+        <tr><td class="px-4 py-2">13</td><td class="px-4 py-2">油耗</td><td class="px-4 py-2 text-right">28</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">14</td><td class="px-4 py-2">蹄花</td><td class="px-4 py-2 text-right">22</td></tr>
+        <tr><td class="px-4 py-2">15</td><td class="px-4 py-2">機油</td><td class="px-4 py-2 text-right">18</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-gray-400 mb-6">「輪胎」排名第 10，超越「非常」「難吃」等常見詞彙，足見其迷因滲透力。</p>
+
+  <h3 class="text-lg font-semibold mb-3">BM25 Unigram 分析</h3>
+  <img src="bm25_unigram.webp" alt="BM25 Unigram" class="rounded-lg border border-gray-700 w-full mb-6">
+
+  <h3 class="text-lg font-semibold mb-3">BM25 2-gram 分析</h3>
+  <img src="bm25_2gram.webp" alt="BM25 2-gram" class="rounded-lg border border-gray-700 w-full mb-6">
+
+  <h3 class="text-lg font-semibold mb-3">BM25 3-gram 分析</h3>
+  <img src="bm25_3gram.webp" alt="BM25 3-gram" class="rounded-lg border border-gray-700 w-full mb-6">
+
+  <h3 class="text-lg font-semibold mb-3">3-gram BM25 TOP 10</h3>
+  <div class="overflow-x-auto mb-4">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">搭配</th><th class="px-4 py-2 text-right">分數</th><th class="px-4 py-2 text-left">解讀</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr class="bg-yellow-900/20"><td class="px-4 py-2 font-semibold">不能 只有 吃到</td><td class="px-4 py-2 text-right">106.4</td><td class="px-4 py-2">經典反串句式</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">可以 吃 一定</td><td class="px-4 py-2 text-right">63.1</td><td class="px-4 py-2">「一定要請朋友吃」</td></tr>
+        <tr><td class="px-4 py-2">一定 請 朋友</td><td class="px-4 py-2 text-right">59.3</td><td class="px-4 py-2">反串推薦</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">請 朋友 吃</td><td class="px-4 py-2 text-right">53.3</td><td class="px-4 py-2">反串推薦</td></tr>
+        <tr><td class="px-4 py-2">好吃 不能 只有</td><td class="px-4 py-2 text-right">33.6</td><td class="px-4 py-2">反串句式變體</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">這麼 好吃 牛肉麵</td><td class="px-4 py-2 text-right">25.2</td><td class="px-4 py-2">反串/真心混合</td></tr>
+        <tr><td class="px-4 py-2">吃 難吃 牛肉麵</td><td class="px-4 py-2 text-right">23.3</td><td class="px-4 py-2">負評核心</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2">牛肉麵 不能 只有</td><td class="px-4 py-2 text-right">22.1</td><td class="px-4 py-2">反串句式</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-gray-400">BM25 前 8 名中有 <strong class="text-yellow-400">7 個是反串相關語句</strong>，這在正常餐廳評論中是不可能出現的。</p>
+</section>
+
+<!-- 六、蹄花麵才是本體？ -->
+<section>
+  <h2 class="text-2xl font-bold text-red-400 mb-6">六、隱藏的真相：蹄花麵才是本體？</h2>
+  <img src="trotter_vs_beef.webp" alt="對比：地獄輪胎麵 vs 天堂蹄花麵" class="rounded-lg border border-gray-700 w-full mb-4">
+  <p class="text-gray-400 mb-4">在反串與負評的夾縫中，有一個有趣的共識浮現——<strong class="text-green-400">蹄花麵其實好吃</strong>：</p>
+  <ul class="list-disc list-inside text-gray-300 space-y-2 mb-4">
+    <li>「蹄花麵是好吃的 不是反串 是真的是好吃ㄉ！」</li>
+    <li>「其實可以改名叫大碗公蹄花麵」</li>
+    <li>「蹄花麵必點」</li>
+    <li>「蹄花麵跟炸醬麵應該是好吃的」</li>
+    <li>「專程來大推蹄花麵，一碗料多肉大只要110」</li>
+    <li>連最嚴厲的負評者也承認：「蹄花麵是真的蠻好吃👍」</li>
+  </ul>
+  <p class="text-gray-400">這暗示店家的問題可能集中在<strong class="text-white">牛肉的處理方式</strong>（過硬、油耗味），而非整體廚藝。</p>
+</section>
+
+<!-- 七、結論 -->
+<section>
+  <h2 class="text-2xl font-bold text-red-400 mb-6">七、結論</h2>
+  <p class="text-gray-400 mb-4">大碗公牛肉麵是一個<strong class="text-white">台灣網路文化的縮影</strong>：</p>
+  <div class="space-y-4">
+    <div class="flex gap-3 bg-gray-900/50 rounded-lg p-4 border border-gray-800">
+      <span class="text-2xl">1.</span>
+      <div><strong class="text-white">迷因的力量</strong><p class="text-gray-400 mt-1">一支 YouTuber 影片讓一家年評論 10 則的小店暴增到年均 150+ 則</p></div>
+    </div>
+    <div class="flex gap-3 bg-gray-900/50 rounded-lg p-4 border border-gray-800">
+      <span class="text-2xl">2.</span>
+      <div><strong class="text-white">反串的代價</strong><p class="text-gray-400 mt-1">4.35★ 的虛高評分持續吸引不知情的消費者前來，造成「被騙→負評→更多人好奇→更多反串」的循環</p></div>
+    </div>
+    <div class="flex gap-3 bg-gray-900/50 rounded-lg p-4 border border-gray-800">
+      <span class="text-2xl">3.</span>
+      <div><strong class="text-white">真實的聲音被淹沒</strong><p class="text-gray-400 mt-1">蹄花麵好吃、老闆態度親切這些真實資訊，被輪胎梗和反串文完全蓋過</p></div>
+    </div>
+    <div class="flex gap-3 bg-gray-900/50 rounded-lg p-4 border border-gray-800">
+      <span class="text-2xl">4.</span>
+      <div><strong class="text-white">趨勢轉變中</strong><p class="text-gray-400 mt-1">2025-2026 年 1★ 比例明顯上升（18-20%），反串熱度正在消退</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 檔案清單 -->
+<section>
+  <h2 class="text-2xl font-bold text-red-400 mb-6">檔案清單</h2>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm border border-gray-700 rounded-lg overflow-hidden">
+      <thead class="bg-gray-800"><tr><th class="px-4 py-2 text-left">檔案</th><th class="px-4 py-2 text-left">說明</th></tr></thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr><td class="px-4 py-2 font-mono text-xs">reviews.json</td><td class="px-4 py-2">749 則評論原始資料（含精確日期）</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2 font-mono text-xs">report.md</td><td class="px-4 py-2">基本分析報告</td></tr>
+        <tr><td class="px-4 py-2 font-mono text-xs">report_detailed.md</td><td class="px-4 py-2">本報告（深度分析）</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2 font-mono text-xs">word_freq.json / .png</td><td class="px-4 py-2">詞頻表 + 圖表</td></tr>
+        <tr><td class="px-4 py-2 font-mono text-xs">bm25_*.json / .png</td><td class="px-4 py-2">BM25 關鍵詞分析</td></tr>
+        <tr class="bg-gray-900/50"><td class="px-4 py-2 font-mono text-xs">neg_word_freq.json / .png</td><td class="px-4 py-2">負評詞頻</td></tr>
+        <tr><td class="px-4 py-2 font-mono text-xs">monthly_volume_rating.png</td><td class="px-4 py-2">月度評論量與星等趨勢</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer class="text-center text-gray-600 text-xs py-8 border-t border-gray-800">
+  <p>大碗公牛肉麵 深度評論分析報告 · 2026-04-07 · Savorithm</p>
+</footer>
+
+</body>
+</html>

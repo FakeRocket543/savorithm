@@ -1,0 +1,13 @@
+output/
+ckip_models/
+__pycache__/
+*.pyc
+.DS_Store
+*.tar.gz
+.venv/
+.venv-spike/
+competitors/
+double_V/
+golden_rooster/
+nice_cream/
+mega_analysis/
