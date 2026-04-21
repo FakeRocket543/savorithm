@@ -49,16 +49,16 @@ async def call_tool(name: str, arguments: dict):
             from savorithm.analyzer import analyze_reviews
             result = analyze_reviews(arguments["slug"], OUTPUT_DIR)
             # 加入 agent 行為指引
-            if "coaching" in result:
+            if "data_summary" in result:
                 result["_agent_instructions"] = (
-                    "你剛完成了評論分析。請不要一次把所有數據倒給使用者。"
-                    "請按照以下流程引導對話：\n"
+                    "你剛完成了評論分析。請讀取 skills/coaching.md 的引導框架，"
+                    "根據 data_summary 裡的數據，跟使用者進行 3-5 輪討論。\n\n"
+                    "規則：\n"
                     "1. 先用 2-3 句話摘要分析結果（總評論數、平均星等、負評率）\n"
-                    "2. 從 coaching 清單中挑出最重要的 1-2 個問題，問使用者\n"
-                    "3. 等使用者回答後，再根據他的回答深入討論\n"
-                    "4. 討論完一個角度後，再問下一個 coaching 問題\n"
-                    "5. 最後引導使用者用 #skill:商業文案 或 #skill:資料分析 寫 300 字分析報告\n"
-                    "重要：不要跳過使用者的回答。每次只問一個問題，等他回答。"
+                    "2. 每次只問一個問題，等使用者回答再往下\n"
+                    "3. 不要替使用者回答\n"
+                    "4. 討論完後引導使用者寫文章\n\n"
+                    "如果找不到 skills/coaching.md，就根據 data_summary 自行判斷該問什麼。"
                 )
             return [TextContent(type="text", text=json.dumps(result, ensure_ascii=False, indent=2))]
 

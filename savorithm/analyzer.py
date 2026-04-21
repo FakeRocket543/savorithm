@@ -288,52 +288,26 @@ def analyze_reviews(slug: str, output_dir: str = "output") -> dict:
     neg_top5 = [w for w, _ in (neg_wf[:5] if neg else [])]
     top5 = [w for w, _ in wf.most_common(5)]
 
-    # ── 教學引導（coaching） ──
-    coaching_questions = []
+    # ── 數據摘要（供 agent 搭配 coaching skill 使用）──
+    data_summary = {
+        "total": total,
+        "avg_rating": round(avg, 2),
+        "neg_rate_pct": neg_rate,
+        "top_keywords": [w for w, _ in wf.most_common(10)],
+        "neg_keywords": neg_top5,
+    }
 
-    # 趨勢引導
+    # 趨勢摘要
     if len(months) >= 6:
         recent = months[-3:]
         early = months[:3]
-        recent_avg = sum(sum(monthly[m]["ratings"]) / len(monthly[m]["ratings"]) for m in recent) / 3
-        early_avg = sum(sum(monthly[m]["ratings"]) / len(monthly[m]["ratings"]) for m in early) / 3
-        if recent_avg < early_avg - 0.2:
-            coaching_questions.append(f"⚠️ 這家店的星等從早期 {early_avg:.1f} 下降到近期 {recent_avg:.1f}。請問使用者：你覺得可能的原因是什麼？是換了廚師、裝潢變了、還是競爭對手變多了？")
-        elif recent_avg > early_avg + 0.2:
-            coaching_questions.append(f"📈 這家店的星等從早期 {early_avg:.1f} 上升到近期 {recent_avg:.1f}。請問使用者：你覺得他們做對了什麼？")
-
-    # 負評引導
-    if neg_rate > 10:
-        coaching_questions.append(f"🔴 負評率 {neg_rate}% 偏高。負評關鍵詞：{', '.join(neg_top5)}。請問使用者：這些負評可以分成幾類？（衛生、服務、口味、價格、等候）哪一類最嚴重？")
-    elif neg_rate > 5:
-        coaching_questions.append(f"🟡 負評率 {neg_rate}%。負評關鍵詞：{', '.join(neg_top5)}。請問使用者：如果你是店家，你會優先解決哪個問題？為什麼？")
-    elif neg_rate < 2 and total > 50:
-        coaching_questions.append(f"✨ 負評率只有 {neg_rate}%，非常低。請問使用者：你覺得這是真的很好，還是可能有灌水嫌疑？怎麼判斷？")
-
-    # 關鍵詞引導
-    hygiene_words = {'髒', '不乾淨', '蟑螂', '頭髮', '衛生', '噁心', '臭'}
-    service_words = {'態度', '冷漠', '不理', '兇', '白眼', '服務差'}
-    wait_words = {'排隊', '等', '久', '慢', '等候'}
-    found_hygiene = [w for w in neg_top5 if w in hygiene_words]
-    found_service = [w for w in neg_top5 if w in service_words]
-    found_wait = [w for w in neg_top5 if w in wait_words]
-
-    if found_hygiene:
-        coaching_questions.append(f"🔴 衛生警訊！負評中出現：{', '.join(found_hygiene)}。這是最嚴重的問題，可能上新聞。請問使用者：這個問題是一直都有，還是最近才出現？（看月度趨勢）")
-    if found_service:
-        coaching_questions.append(f"🟠 服務態度問題：{', '.join(found_service)}。請問使用者：你自己去過這家店嗎？你的體驗跟評論一致嗎？")
-    if found_wait:
-        coaching_questions.append(f"🟡 等候問題：{', '.join(found_wait)}。這通常代表生意好但體驗差。請問使用者：如果你是店家，你會怎麼解決排隊問題？")
-
-    # 差異化引導
-    if 'CP值' in top5 or 'cp值' in top5 or 'CP' in top5:
-        coaching_questions.append("💰 客人很在意 CP 值。請問使用者：這代表這家店的定價策略是什麼？如果要漲價，應該怎麼做才不會流失客人？")
-    if '老闆' in top5 or '老闆娘' in top5:
-        coaching_questions.append("👤 客人記住了老闆/老闆娘。這是人格化服務的優勢，但也是風險——老闆不在的時候怎麼辦？請問使用者：你覺得這家店應該怎麼把「老闆的魅力」轉化成「品牌的魅力」？")
-
-    # 通用引導
-    coaching_questions.append(f"📊 請問使用者：看完這份分析，你覺得這家店最大的優勢是什麼？最大的風險是什麼？如果你是店家，你明天會先做什麼？")
-    coaching_questions.append("✍️ 請引導使用者用 #skill:商業文案 或 #skill:資料分析，根據以上數據寫一篇 300 字的分析報告。提醒他們要引用具體數據，不要只寫「還不錯」。")
+        recent_avg = round(sum(sum(monthly[m]["ratings"]) / len(monthly[m]["ratings"]) for m in recent) / 3, 2)
+        early_avg = round(sum(sum(monthly[m]["ratings"]) / len(monthly[m]["ratings"]) for m in early) / 3, 2)
+        data_summary["trend"] = {
+            "early_avg": early_avg,
+            "recent_avg": recent_avg,
+            "direction": "declining" if recent_avg < early_avg - 0.2 else "improving" if recent_avg > early_avg + 0.2 else "stable",
+        }
 
     return {
         "slug": slug,
@@ -345,5 +319,5 @@ def analyze_reviews(slug: str, output_dir: str = "output") -> dict:
         "charts": charts,
         "top_words": [w for w, _ in wf.most_common(15)],
         "neg_top_words": neg_top5,
-        "coaching": coaching_questions,
+        "data_summary": data_summary,
     }
